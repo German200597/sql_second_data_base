@@ -5,12 +5,13 @@ create table if not exists Singer(
 
 create table if not exists Album(
 	id serial primary key,
-	Title varchar(40) not null
+	Title varchar(40) not null,
+	Release_Year integer not null
 );
 
 create table if not exists SingerAlbum( 
-	Singer_id serial not null references Singer(id),
-	Album_id serial not null references Album(id)	
+	Singer_id integer not null references Singer(id),
+	Album_id integer not null references Album(id)	
 );
 
 create table if not exists Collection( 
@@ -28,8 +29,8 @@ create table if not exists Track(
 );
 
 create table if not exists TrackCollection( 
-	Track_id serial not null references Track(id),
-	Collection_id serial not null references Collection(id)
+	Track_id integer not null references Track(id),
+	Collection_id integer not null references Collection(id)
 );
 
 create table if not exists Genre( 
@@ -38,6 +39,6 @@ create table if not exists Genre(
 );
 
 create table if not exists SingerGenre( 
-	Singer_id serial not null,
-	Genre_id serial not null
+	Singer_id integer not null references Singer(id),
+	Genre_id integer not null references Genre(id)
 );
