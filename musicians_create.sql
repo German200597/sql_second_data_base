@@ -6,7 +6,7 @@ create table if not exists Singer(
 create table if not exists Album(
 	id serial primary key,
 	Title varchar(40) not null,
-	Release_Year integer not null
+	Release_Year integer not null check(Release_Year>0)
 );
 
 create table if not exists SingerAlbum( 
